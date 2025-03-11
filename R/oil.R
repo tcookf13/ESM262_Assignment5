@@ -47,9 +47,9 @@ oil = function(volume, wtemp, windspeed, viscosity, ratecoeff) {
   
 # make some adjustments to oil spread based on ocean temperature and wind speed 
 # ocean temperature adjustment
-wtemp_adj = 1 + (wtemp-15) * 0.01  # warmer water increases spread
+wtemp_adj = 1 + (wtemp-15) * 0.01  # warmer water increases spread rate
 # windspeed adjustment
-windspeed_adj = 1 + (windspeed * 0.05) # faster wind speed increases spread
+windspeed_adj = 1 + (windspeed * 0.05) # faster wind speed increases spread rate
   
   
 # calculate oil spill area (km^2) using Fay's Model for Spill Area
