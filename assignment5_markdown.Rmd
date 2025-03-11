@@ -45,11 +45,10 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
+# Write at least 2 tests for your function; store in a separate test file
 
+```{r}
 
-#  Write at least 2 tests for your function; store in a separate test file
+```
 
-
-#  Put this in a git repo that includes an R subdirectory, a tests subsdirectory and your Quatro file and submit the link on Canvas (you can put all of this in a new git repo or a subdirectory of an existing git repo)
-
-
+# Put this in a git repo that includes an R subdirectory, a tests subsdirectory and your Quatro file and submit the link on Canvas (you can put all of this in a new git repo or a subdirectory of an existing git repo)
