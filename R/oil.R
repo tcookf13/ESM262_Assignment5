@@ -35,8 +35,8 @@ oil = function(volume, wtemp, windspeed, viscosity, ratecoeff) {
   # check wtemp
   wtemp = ifelse( (wtemp<0), return("Caution: ocean temperature is below freezing"), wtemp)
   
-  # check windpseed
-  windspeed = ifelse( (windpseed<0), return("Caution: windpseed cannot be negative"), windpseed)
+  # check windspeed
+  windspeed = ifelse( (windspeed<0), return("Caution: windspeed cannot be negative"), windspeed)
   
   # check viscosity
   viscosity = ifelse( (viscosity<0), return("Caution: viscosity cannot be negative"), viscosity) 
@@ -59,7 +59,7 @@ area = ratecoeff * (volume^(2/3)) * wtemp_adj * windspeed_adj
 thickness = (volume / (area * 1e6)) * 10^3 # multiply area*10^6 for km^2 --> m^2; multiply thickness (m) by 10^3 to get mm
 
 # output from function
-return(list(area_km2=area, thickness_mm=thickness)) 
+return(list(area_km2=round(area,3), thickness_mm=round(thickness,3)))
 }
 
   
