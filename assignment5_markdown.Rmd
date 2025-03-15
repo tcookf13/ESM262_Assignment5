@@ -109,12 +109,11 @@ return(list(area_km2=round(area,3), thickness_mm=round(thickness,3)))
 #Generate data for 2 of the function inputs
 volume = c(100, 200, 300, 400, 500)
 wtemp = c(10, 15, 20, 25, 30)
-windspeed = c(5, 10, 15, 20, 25)
 
 # run the function for the data using a for loop
 results = list()
 for (i in 1:length(volume)) {
-  results[[i]] = oil(volume[i], wtemp[i], windspeed[i], viscosity=0.0001, ratecoeff=0.16)
+  results[[i]] = oil(volume[i], wtemp[i], windspeed=15, viscosity=0.0001, ratecoeff=0.16)
 }
 
 print(results)
@@ -148,4 +147,4 @@ results_combined %>%
 
 # Write at least 2 tests for your function; store in a separate test file
 
-# Put this in a git repo that includes an R subdirectory, a tests subsdirectory and your Quatro file and submit the link on Canvas (you can put all of this in a new git repo or a subdirectory of an existing git repo)
+# Put this in a git repo that includes an R subdirectory, a tests subdirectory and your Quatro file and submit the link on Canvas (you can put all of this in a new git repo or a subdirectory of an existing git repo)
