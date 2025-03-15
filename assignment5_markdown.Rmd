@@ -107,7 +107,7 @@ return(list(area_km2=round(area,3), thickness_mm=round(thickness,3)))
 ```{r}
 
 #Generate data for 2 of the function inputs
-volume = c(100, 200, 300, 400, 500)
+volume = c(100000, 200000, 300000, 400000, 500000)
 wtemp = c(10, 15, 20, 25, 30)
 
 # run the function for the data using a for loop
