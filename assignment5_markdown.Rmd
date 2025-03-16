@@ -15,6 +15,7 @@ library(devtools)
 library(testthat)
 library(purrr)
 library(ggplot2)
+library(dplyr)
 
 ```
 
@@ -109,6 +110,7 @@ return(list(area_km2=round(area,3), thickness_mm=round(thickness,3)))
 #Generate data for 2 of the function inputs
 volume = c(100000, 200000, 300000, 400000, 500000)
 wtemp = c(10, 15, 20, 25, 30)
+windspeed <- rep(15, length(volume))
 
 # run the function for the data using a for loop
 results = list()
@@ -119,24 +121,21 @@ for (i in 1:length(volume)) {
 print(results)
 
 # repeat the "looping" using something from the "purrr" package
-results_purrr = purrr::pmap(list(volume, wtemp, windspeed), ~oil(.x, .y, 15, viscosity=0.0001, ratecoeff=0.16))
+results_purrr = purrr::pmap(list(volume, wtemp, windspeed=15), ~oil(.x, .y, 15, viscosity=0.0001, ratecoeff=0.16))
 
 print(results_purrr)
 
 # Graph results of both methods
 
 results_df = bind_rows(results) %>% 
-  mutate(volume = volume, wtemp = wtemp, windspeed = windspeed, method = "For Loop")
+  mutate(volume = volume, wtemp = wtemp, windspeed = windspeed)
 
 results_purr_df = bind_rows(results_purrr) %>% 
-  mutate(volume = volume, wtemp = wtemp, windspeed = windspeed, method = "purrr::pmap")
-
-# Combine both dataframes into one
-results_combined = bind_rows(results_df, results_purr_df)
+  mutate(volume = volume, wtemp = wtemp, windspeed = windspeed)
 
 
-results_combined %>%
-  ggplot(aes(x = volume, y = area_km2, color = method, group = method)) +
+results_df %>%
+  ggplot(aes(x = volume, y = area_km2)) +
   geom_point() +
   geom_line() +
   labs(title = "Oil Spill Area vs. Volume", x = "Volume (m^3)", y = "Area (km^2)") +
